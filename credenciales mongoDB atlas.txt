@@ -1,0 +1,5 @@
+user: strider
+pass: j5ttlnBkN40ynohw
+
+MongoDB URL
+mongodb+srv://strider:j5ttlnBkN40ynohw@cluster0-q8c1j.mongodb.net/cafe
