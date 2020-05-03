@@ -1,6 +1,9 @@
 require('./config/config');
+require('./routes/usuario');
 
 const express = require('express');
+const mongoose = require('mongoose');
+
 const app = express();
 
 const bodyParser = require('body-parser');
@@ -10,43 +13,21 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(  require('./routes/usuario'));
 
-// 4 tipos de peticiones basicas
-app.get('/usuario', function (req, res) {
-  res.json('get usuario')
-})
-//crea registros
-app.post('/usuario', function (req, res) {
+//establecer la conexion ala base de datos
+mongoose.connect(process.env.URLDB,
+                  { useNewUrlParser:true, 
+                    useCreateIndex:true
+                  },
+                  (err,res)=>{
 
-    let body = req.body;
+    if( err ) throw new err;
 
-    if(body.nombre === undefined) {
+    console.log('Base de datos Conectada');
+});
 
-        res.status(400).json({
-            ok:false,
-            mensaje: ' El nombre en necesario'
-        })
 
-    }else{
-        res.json({
-            persona:body,
-        })
-    }
-    
-  })
-//actualizar datos
-//actualizar un elementos en especifico
-app.put('/usuario/:id', function (req, res) {
-
-    let id = req.params.id;
-    res.json({
-        id,
-    })
-  })
-//eliminar
-app.delete('/usuario', function (req, res) {
-    res.json('delete usuario')
-  })
 app.listen(process.env.PORT,()=>{
     console.log('Escuchando puerto',process.env.PORT);
 })
