@@ -83,6 +83,7 @@ app.get('/productos/buscar/:termino', verificaToken,(req,res)=>{
                     err,
                 });
             }
+            
             res.json({
                 ok:true,
                 productos
