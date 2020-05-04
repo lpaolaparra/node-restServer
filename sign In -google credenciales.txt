@@ -1,0 +1,8 @@
+
+Client ID
+
+218936594421-su7t9acdv2lit9grjr336jkgtte5ha7n.apps.googleusercontent.com
+
+Client Secret
+
+ruzpSk6aMIM5ybzh4P-iwAmV
